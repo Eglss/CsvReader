@@ -1,0 +1,37 @@
+<Configuration>
+    <Appenders>
+        <File name="fout" fileName="CSVReader.log" append="true">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%nw</Pattern>
+            </PatternLayout>
+        </File>
+        <RandomAccessFile name="RandomAccessFileAppenderError" fileName="Logs/ErrorLog.log" immediateFlush="false" append="true">
+            <PatternLayout>
+                <pattern>
+                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </pattern>
+            </PatternLayout>
+        </RandomAccessFile>
+        <RandomAccessFile name="RandomAccessFileAppenderInfo" fileName="Logs/InfoLog.log" immediateFlush="false" append="false">
+            <PatternLayout>
+                <pattern>
+                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </pattern>
+            </PatternLayout>
+        </RandomAccessFile>
+        <RandomAccessFile name="RandomAccessFileAppenderTrace" fileName="Logs/TraceLog.log" immediateFlush="false" append="false">
+            <PatternLayout>
+                <pattern>
+                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </pattern>
+            </PatternLayout>
+        </RandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <Root level="trace" includeLocation="false">
+            <AppenderRef ref="RandomAccessFileAppenderError" level="error"/>
+            <AppenderRef ref="RandomAccessFileAppenderInfo" level="info"/>
+            <AppenderRef ref="RandomAccessFileAppenderTrace"/>
+        </Root>
+    </Loggers>
+</Configuration>
